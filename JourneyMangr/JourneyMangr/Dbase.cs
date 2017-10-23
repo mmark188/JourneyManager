@@ -45,6 +45,24 @@ namespace JourneyMangr
         /// Véletlenszerű szó lekérése az adatbázisból
         /// </summary>
         /// <returns></returns>
+        public void AddCar(string name, int ccm, string fuel)
+        {
+        
+
+            string sql = "INSERT INTO cars ([nev], [motorccm], [uzemanyag]) VALUES ([@Nev], [@Ccm], [@Fuel])";
+            using (OleDbConnection cn = new OleDbConnection
+                (@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = 'db.mdb'"))
+            using (OleDbCommand cmd = new OleDbCommand(sql, cn))
+            {
+                cn.Open();
+                cmd.Parameters.AddWithValue("@Nev", name);
+                cmd.Parameters.AddWithValue("@Ccm", ccm);
+                cmd.Parameters.AddWithValue("@Fuel", fuel);
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+           
+        }
         public string GetRandomWord()
         {
             con.Open();

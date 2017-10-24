@@ -134,7 +134,7 @@ namespace JourneyMangr
         {
             string sql = "SELECT futottkm, kmallas FROM data INNER JOIN cars ON data.autoid = cars.id;";
             DataTable dt = new DataTable();
-            OleDbConnection cn = new OleDbConnection(@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = 'words.mdb'");
+            OleDbConnection cn = new OleDbConnection(@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = 'db.mdb'");
             OleDbDataAdapter da = new OleDbDataAdapter(sql, cn);
             cn.Open();
             da.Fill(dt);

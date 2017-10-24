@@ -24,6 +24,7 @@ namespace JourneyMangr
         {
             InitializeComponent();
             DBase db = DBase.GetInstance();
+            db.AddRecord("lancer",243000,520,50,21000,23500);
             datagrid.DataContext = db.GetCarData("lancer");
            
         }

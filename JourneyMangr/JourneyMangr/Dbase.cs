@@ -88,7 +88,25 @@ namespace JourneyMangr
 
             return id;
         }
+        public void AddRecord(string name, long futottkm, int kmallas, int fogyasztas, int szerviz, int ar)
+        {
+            string sql = "INSERT INTO data ([autoid], [futottkm], [kmallas], [fogyasztas], [szerviz], [ar]) VALUES ([@Id], [@Futott], [@Allas], [@Fogyaszt], [@Szerviz], [@Ar])";
+            using (OleDbConnection cn = new OleDbConnection
+                (@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = 'db.mdb'"))
+            using (OleDbCommand cmd = new OleDbCommand(sql, cn))
+            {
+                cn.Open();
+                cmd.Parameters.AddWithValue("@Id", GetAutoID(name));
+                cmd.Parameters.AddWithValue("@Futott", futottkm);
+                cmd.Parameters.AddWithValue("@Allas", kmallas);
+                cmd.Parameters.AddWithValue("@Fogyaszt", fogyasztas);
+                cmd.Parameters.AddWithValue("@Szerviz", szerviz);
+                cmd.Parameters.AddWithValue("@Ar", ar);
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
 
+        }
         public string GetRandomWord()
         {
             con.Open();

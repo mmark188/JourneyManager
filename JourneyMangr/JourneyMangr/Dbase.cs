@@ -47,8 +47,6 @@ namespace JourneyMangr
         /// <returns></returns>
         public void AddCar(string name, int ccm, string fuel)
         {
-        
-
             string sql = "INSERT INTO cars ([nev], [motorccm], [uzemanyag]) VALUES ([@Nev], [@Ccm], [@Fuel])";
             using (OleDbConnection cn = new OleDbConnection
                 (@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = 'db.mdb'"))
@@ -120,9 +118,21 @@ namespace JourneyMangr
         /// Eredménytábla lekérése
         /// </summary>
         /// <returns></returns>
-        public DataTable GetScoreboard()
+        private int GetAutoID(string name)
         {
-            string sql = "SELECT * FROM Scores";
+            string select = "SELECT id FROM cars WHERE nev=" + name;
+            con.Close();
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand(select, con);
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = ("SELECT id FROM cars WHERE nev=" + name);
+            int id = (int)cmd.ExecuteScalar();
+            con.Close();
+            return id;
+        }
+        public DataTable GetCarData(string carname)
+        {
+            string sql = "SELECT futottkm, kmallas FROM data INNER JOIN cars ON data.autoid = cars.id;";
             DataTable dt = new DataTable();
             OleDbConnection cn = new OleDbConnection(@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = 'words.mdb'");
             OleDbDataAdapter da = new OleDbDataAdapter(sql, cn);

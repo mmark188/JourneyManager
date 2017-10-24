@@ -23,6 +23,9 @@ namespace JourneyMangr
         public MainWindow()
         {
             InitializeComponent();
+            DBase db = DBase.GetInstance();
+            datagrid.DataContext = db.GetCarData("lancer");
+           
         }
     }
 }

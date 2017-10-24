@@ -120,19 +120,34 @@ namespace JourneyMangr
         /// <returns></returns>
         private int GetAutoID(string name)
         {
+            int id = 0;
             string select = "SELECT id FROM cars WHERE nev=" + name;
-            con.Close();
-            con.Open();
-            OleDbCommand cmd = new OleDbCommand(select, con);
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = ("SELECT id FROM cars WHERE nev=" + name);
-            int id = (int)cmd.ExecuteScalar();
-            con.Close();
+            using (OleDbConnection connection = new OleDbConnection((@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source =
+            'db.mdb'")))
+            {
+                OleDbCommand command = new OleDbCommand(select, connection);
+
+                command.Connection = connection;
+                command.CommandType = CommandType.Text;
+                command.CommandText="SELECT [id] FROM cars WHERE [nev]='" + name+"'";
+                OleDbDataReader dr = null;
+                connection.Open();
+                dr = command.ExecuteReader();
+
+                while (dr.Read())
+                {
+                     id = Int32.Parse(dr["id"].ToString());
+                    
+                }
+                connection.Close();
+
+            }
+
             return id;
         }
         public DataTable GetCarData(string carname)
         {
-            string sql = "SELECT futottkm, kmallas FROM data INNER JOIN cars ON data.autoid = cars.id;";
+            string sql = "SELECT nev, futottkm, kmallas FROM data INNER JOIN cars ON data.autoid = cars.id WHERE autoid="+GetAutoID(carname);
             DataTable dt = new DataTable();
             OleDbConnection cn = new OleDbConnection(@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = 'db.mdb'");
             OleDbDataAdapter da = new OleDbDataAdapter(sql, cn);

@@ -61,6 +61,34 @@ namespace JourneyMangr
             }
            
         }
+        private int GetAutoID(string name)
+        {
+            int id = 0;
+            string select = "SELECT id FROM cars WHERE nev=" + name;
+            using (OleDbConnection connection = new OleDbConnection((@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source =
+            'db.mdb'")))
+            {
+                OleDbCommand command = new OleDbCommand(select, connection);
+
+                command.Connection = connection;
+                command.CommandType = CommandType.Text;
+                command.CommandText = "SELECT [id] FROM cars WHERE [nev]='" + name + "'";
+                OleDbDataReader dr = null;
+                connection.Open();
+                dr = command.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    id = Int32.Parse(dr["id"].ToString());
+
+                }
+                connection.Close();
+
+            }
+
+            return id;
+        }
+
         public string GetRandomWord()
         {
             con.Open();

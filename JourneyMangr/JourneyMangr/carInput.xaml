@@ -1,0 +1,22 @@
+﻿<Window x:Class="JourneyMangr.carInput"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JourneyMangr"
+        mc:Ignorable="d"
+        Title="carInput" Height="320" Width="470">
+    <Grid>
+        <DataGrid x:Name="dataGrid_Copy" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Height="161" Width="218"/>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="103" Margin="10,10,0,0" VerticalAlignment="Top" Width="218"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="233,10,0,0" TextWrapping="Wrap" Text="Type" VerticalAlignment="Top" Width="219"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" Margin="233,38,0,0" TextWrapping="Wrap" Text="Engine" VerticalAlignment="Top" Width="219"/>
+        <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="23" Margin="233,66,0,0" TextWrapping="Wrap" Text="Production date" VerticalAlignment="Top" Width="219"/>
+        <TextBox x:Name="textBox_Copy2" HorizontalAlignment="Left" Height="23" Margin="233,94,0,0" TextWrapping="Wrap" Text="Performance" VerticalAlignment="Top" Width="219"/>
+        <TextBox x:Name="textBox_Copy3" HorizontalAlignment="Left" Height="23" Margin="233,122,0,0" TextWrapping="Wrap" Text="Fuel type" VerticalAlignment="Top" Width="219"/>
+        <TextBox x:Name="textBox_Copy4" HorizontalAlignment="Left" Height="23" Margin="233,150,0,0" TextWrapping="Wrap" Text="Fuel consumption" VerticalAlignment="Top" Width="219"/>
+        <Button x:Name="button" Content="Add" HorizontalAlignment="Left" Margin="233,178,0,0" VerticalAlignment="Top" Width="115" Height="101" Click="button_Click"/>
+        <Button x:Name="button_Copy" Content="Remove" HorizontalAlignment="Left" Margin="353,178,0,0" VerticalAlignment="Top" Width="100" Height="101"/>
+
+    </Grid>
+</Window>

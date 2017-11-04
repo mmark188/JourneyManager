@@ -1,0 +1,9 @@
+1. Kovetelmenyek
+	-Minden tankolasnal vezetheto a benzinkut, az aktualis üzemanyag ar és a tankolt mennyiseg
+	-A szervizelesi költsegek is tarolhatok
+	-Több auto vezethetö
+	-Minden adatbazisban tarolando
+	-A szükseges adatok exportalhatok
+2. Eszközök
+	-Visual Studio
+	-MS Access

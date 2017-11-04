@@ -70,6 +70,7 @@
     <Compile Include="carInput.xaml.cs">
       <DependentUpon>carInput.xaml</DependentUpon>
     </Compile>
+     <Compile Include="Dbase.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

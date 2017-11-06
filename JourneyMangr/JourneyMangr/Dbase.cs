@@ -74,8 +74,6 @@ namespace JourneyMangr
         {
             string sql = "SELECT id FROM cars WHERE nev = ?";
             int i = 0;
-
-          
                 OleDbCommand command = con.CreateCommand();
                 command.CommandText = sql;
                 command.CommandType = CommandType.Text;
@@ -106,24 +104,20 @@ namespace JourneyMangr
         {
             string sql = "SELECT nev FROM cars";
             List<string> l = new List<string>();
-            string connection = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source ='db.mdb'";
+            OleDbCommand command = con.CreateCommand();
+            command.CommandText = sql;
+            command.CommandType = CommandType.Text;
+
             try
             {
-                /*using (OleDbConnection conn = new OleDbConnection(connection))
-                {
-                    OleDbCommand command = new OleDbCommand(sql, conn);
-                    conn.Open();
-                    OleDbDataReader reader = command.ExecuteReader();
-                   l.Add(reader.GetString(0));
-                    conn.Close();
-                }*/
-                OleDbConnection cn = new OleDbConnection(@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = 'db.mdb'");
-                OleDbCommand command = new OleDbCommand(sql);
-             
-                cn.Open();
+
+
+                con.Open();
                 OleDbDataReader reader = command.ExecuteReader();
-                l.Add(reader.GetString(0));
-                cn.Close();
+                while (reader.Read())
+                {
+                    l.Add(reader["nev"].ToString());
+                }
                 return l;
 
             }
@@ -132,6 +126,12 @@ namespace JourneyMangr
             {
                 MessageBox.Show("Ellenőrizd az adatbázis kapcsolat meglétét!");
             }
+            finally
+            {
+                if (con != null)
+                    con.Close();
+            }
+
             return null;
         }
     }

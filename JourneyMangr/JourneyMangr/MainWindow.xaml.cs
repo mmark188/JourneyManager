@@ -24,11 +24,11 @@ namespace JourneyMangr
         {
             InitializeComponent();
             DBase database = DBase.GetInstance();
-            /* foreach (var i in database.GetCarList())
+             foreach (var i in database.GetCarList())
              {
                  comboBox.Items.Add(i);
              }
-             */
+             
 
             dataGrid.DataContext= database.GetCarData("eclipse");
         }

@@ -19,20 +19,21 @@ namespace JourneyMangr
     /// </summary>
     public partial class carInput : Window
     {
-        DBase database = DBase.GetInstance();
-        public carInput()
+        public void Initialize()
         {
-            InitializeComponent();
             foreach (var i in database.GetCarList())
             {
                 listBox.Items.Add(i);
             }
         }
-
-        private void button_Click(object sender, RoutedEventArgs e)
+        DBase database = DBase.GetInstance();
+        public carInput()
         {
-
+            InitializeComponent();
+            Initialize();
         }
+
+       
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -47,6 +48,18 @@ namespace JourneyMangr
             dataGrid_Copy.DataContext = database.GetCarData(listBox.SelectedValue.ToString());
            
            
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            
+            database.AddCar(txtNev.Text,Convert.ToInt32(txtCcm.Text),txtFuelType.Text);
+            Initialize();
+        }
+
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

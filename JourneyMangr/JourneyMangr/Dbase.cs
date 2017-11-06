@@ -83,10 +83,11 @@ namespace JourneyMangr
                     OleDbCommand command = new OleDbCommand(sql, conn);
                     conn.Open();
                     OleDbDataReader reader = command.ExecuteReader();
-                    reader.GetInt32(0);
+                  i= reader.GetInt32(0);
                     conn.Close();
+                  
                 }
-
+                return i;
             }
 
             catch (Exception ex)
@@ -94,6 +95,32 @@ namespace JourneyMangr
                 MessageBox.Show("Ellenőrizd az adatbázis kapcsolat meglétét!");
             }
             return 0;
+        }
+        public List<string> GetCarList()
+        {
+            string sql = "SELECT DISTINCT nev FROM cars";
+            List<string> l = new List<string>();
+            string connection = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source ='db.mdb'";
+            OleDbDataAdapter da = new OleDbDataAdapter(sql, connection);
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connection))
+                {
+                    OleDbCommand command = new OleDbCommand(sql, conn);
+                    conn.Open();
+                    OleDbDataReader reader = command.ExecuteReader();
+                   l.Add(reader.GetString(0));
+                    conn.Close();
+                }
+                return l;
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ellenőrizd az adatbázis kapcsolat meglétét!");
+            }
+            return null;
         }
     }
 }

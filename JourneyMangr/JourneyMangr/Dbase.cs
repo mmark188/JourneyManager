@@ -42,6 +42,8 @@ namespace JourneyMangr
             return max;
         }
 
+        public void AddCarData(string nev) { }
+
         public void AddCar(string name, int ccm, string fuel)
         {
             string sql = "INSERT INTO cars ([nev], [motorccm], [uzemanyag]) VALUES ([@Nev], [@Ccm], [@Fuel])";
@@ -117,6 +119,42 @@ namespace JourneyMangr
                 while (reader.Read())
                 {
                     l.Add(reader["nev"].ToString());
+                }
+                return l;
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ellenőrizd az adatbázis kapcsolat meglétét!");
+            }
+            finally
+            {
+                if (con != null)
+                    con.Close();
+            }
+
+            return null;
+        }
+        public List<CarData> GetCarDataList(string carname)
+        {
+            List<CarData> l = new List<CarData>();
+            CarData d;
+            string sql = "SELECT nev, futottkm, kmallas, fogyasztas, szerviz, ar FROM data INNER JOIN cars ON data.autoid = cars.id WHERE autoid=" + GetAutoID(carname);
+            OleDbCommand command = con.CreateCommand();
+            command.CommandText = sql;
+            command.CommandType = CommandType.Text;
+
+            try
+            {
+
+
+                con.Open();
+                OleDbDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    d = new CarData(reader["nev"].ToString(),Convert.ToInt32(reader["futottkm"]),Convert.ToInt32(reader["kmallas"]),reader["szerviz"].ToString(),Convert.ToInt32(reader["ar"]));
+                    l.Add(d);
                 }
                 return l;
 

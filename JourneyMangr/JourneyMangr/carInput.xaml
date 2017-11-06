@@ -13,9 +13,6 @@
         <TextBox x:Name="txtNev" HorizontalAlignment="Left" Height="23" Margin="233,10,0,0" TextWrapping="Wrap" Text="nev" VerticalAlignment="Top" Width="219"/>
         <TextBox x:Name="txtCcm" HorizontalAlignment="Left" Height="23" Margin="233,38,0,0" TextWrapping="Wrap" Text="ccm" VerticalAlignment="Top" Width="219"/>
         <TextBox x:Name="txtFuelType" HorizontalAlignment="Left" Height="23" Margin="233,66,0,0" TextWrapping="Wrap" Text="fuel type" VerticalAlignment="Top" Width="219"/>
-        <TextBox x:Name="textBox_Copy2" HorizontalAlignment="Left" Height="23" Margin="233,94,0,0" TextWrapping="Wrap" Text="Performance" VerticalAlignment="Top" Width="219"/>
-        <TextBox x:Name="textBox_Copy3" HorizontalAlignment="Left" Height="23" Margin="233,122,0,0" TextWrapping="Wrap" Text="Fuel type" VerticalAlignment="Top" Width="219"/>
-        <TextBox x:Name="textBox_Copy4" HorizontalAlignment="Left" Height="23" Margin="233,150,0,0" TextWrapping="Wrap" Text="Fuel consumption" VerticalAlignment="Top" Width="219"/>
         <Button x:Name="btnAdd" Click="btnAdd_Click" Content="Add" HorizontalAlignment="Left" Margin="233,178,0,0" VerticalAlignment="Top" Width="115" Height="101" />
         <Button x:Name="btnRemove" Click="btnRemove_Click" Content="Remove" HorizontalAlignment="Left" Margin="353,178,0,0" VerticalAlignment="Top" Width="100" Height="101"/>
 

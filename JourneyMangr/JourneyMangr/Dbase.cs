@@ -42,7 +42,24 @@ namespace JourneyMangr
             return max;
         }
 
-        public void AddCarData(string nev) { }
+        public void AddCarData(string carname,CarData car)
+        {
+            string sql = "INSERT INTO data ([autoid], [futottkm], [kmallas], [fogyasztas], [szerviz], [ar]) VALUES ([@Autoid], [@Futottkm], [@Kmallas], [@Fogyasztas], [@Szerviz], [@Ar])";
+            using (OleDbConnection cn = new OleDbConnection
+                (@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = 'db.mdb'"))
+            using (OleDbCommand cmd = new OleDbCommand(sql, cn))
+            {
+                cn.Open();
+                cmd.Parameters.AddWithValue("@Autoid", GetAutoID(carname));
+                cmd.Parameters.AddWithValue("@Futottkm", car.futottkm);
+                cmd.Parameters.AddWithValue("@Kmallas", car.kmallas);
+                cmd.Parameters.AddWithValue("@Fogyasztas", car.fogyasztas);
+                cmd.Parameters.AddWithValue("@Szerviz", car.szerviz);
+                cmd.Parameters.AddWithValue("@Ar", car.ar);
+                cmd.ExecuteNonQuery();
+                cn.Close();
+            }
+        }
 
         public void AddCar(string name, int ccm, string fuel)
         {

@@ -37,17 +37,35 @@ namespace JourneyMangr
          
         }
 
-        
+
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             dataGrid.DataContext = database.GetCarData(comboBox.SelectedValue.ToString());
             List<CarData> d = database.GetCarDataList(comboBox.SelectedValue.ToString());
-            futottkm_text.Text = d[d.Count-1].futottkm.ToString();
-            kmallas_text.Text = d[d.Count-1].kmallas.ToString();
-            fogyasztas_text.Text = d[d.Count-1].fogyasztas.ToString();
-            szerviz_text.Text = d[d.Count-1].szerviz.ToString();
-            ar_text.Text = d[d.Count-1].ar.ToString();
+            if (d.Count>0)
+            { 
+            futottkm_text.Text = d[d.Count - 1].futottkm.ToString();
+            kmallas_text.Text = d[d.Count - 1].kmallas.ToString();
+            fogyasztas_text.Text = d[d.Count - 1].fogyasztas.ToString();
+            szerviz_text.Text = d[d.Count - 1].szerviz.ToString();
+            ar_text.Text = d[d.Count - 1].ar.ToString();
+            }
+        }
+
+        private void btnUpload_Click(object sender, RoutedEventArgs e)
+        {
+            CarData d = new CarData(comboBox.SelectedValue.ToString(),
+                Convert.ToInt32(futottkm_text.Text),Convert.ToInt32(kmallas_text.Text),
+                Convert.ToInt32(fogyasztas_text.Text),szerviz_text.Text.ToString(),
+                Convert.ToInt32(ar_text.Text));
+            database.AddCarData(comboBox.SelectedValue.ToString(), d);
+            dataGrid.DataContext = database.GetCarData(comboBox.SelectedValue.ToString());
+        }
+
+        private void btnNewCar_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

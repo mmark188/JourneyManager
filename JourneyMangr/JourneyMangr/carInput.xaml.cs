@@ -59,7 +59,8 @@ namespace JourneyMangr
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
-
+            database.DeleteCar(listBox.SelectedValue.ToString());
+            Initialize();
         }
     }
 }

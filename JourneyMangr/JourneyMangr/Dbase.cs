@@ -202,5 +202,9 @@ namespace JourneyMangr
             sum = sum / km;
             return sum;
         }
+        public void DeleteCar(string carname)
+        {
+
+        }
     }
 }

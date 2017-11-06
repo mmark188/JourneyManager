@@ -189,5 +189,16 @@ namespace JourneyMangr
 
             return null;
         }
+        public double CalcFTperKM(string carname)
+        {
+            List<CarData> d = GetCarDataList(carname);
+            double sum = 0;
+            foreach (var i in d)
+            {
+                sum += i.ar;
+            }
+            sum = sum / d.Count;
+            return sum;
+        }
     }
 }

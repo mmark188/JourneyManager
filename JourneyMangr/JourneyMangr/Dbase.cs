@@ -79,19 +79,27 @@ namespace JourneyMangr
                 OleDbCommand command = con.CreateCommand();
                 command.CommandText = sql;
                 command.CommandType = CommandType.Text;
-                con.Open();
-            command.Parameters.AddWithValue("carname",carname);
-                OleDbDataReader reader = command.ExecuteReader();
-            while (reader.Read())
+            try
             {
-                i = Convert.ToInt32(reader["id"]);
-            }
+                con.Open();
+                command.Parameters.AddWithValue("carname", carname);
+                OleDbDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    i = Convert.ToInt32(reader["id"]);
+                }
                 return i;
-            
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Ellenőrizd az adatbázis kapcsolat meglétét!");
+            }
 
-          
-                     con.Close();
-            
+            finally
+            {
+                if (con!=null)
+                    con.Close();
+            }
             return 0;
         }
         public List<string> GetCarList()

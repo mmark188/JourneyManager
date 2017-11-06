@@ -20,17 +20,24 @@ namespace JourneyMangr
     /// </summary>
     public partial class MainWindow : Window
     {
+        DBase database = DBase.GetInstance();
         public MainWindow()
         {
             InitializeComponent();
-            DBase database = DBase.GetInstance();
+           
              foreach (var i in database.GetCarList())
              {
                  comboBox.Items.Add(i);
              }
-             
-
+            comboBox.SelectedIndex = 0;
             dataGrid.DataContext= database.GetCarData("eclipse");
+        }
+
+        
+
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            dataGrid.DataContext = database.GetCarData(comboBox.SelectedValue.ToString());
         }
     }
 }

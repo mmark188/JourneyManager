@@ -26,8 +26,7 @@ namespace JourneyMangr
 
         private static Random rnd = new Random();
         OleDbConnection con = new OleDbConnection
-            (@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source =
-            'db.mdb'");
+            (@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source='db.mdb'");
 
         private int GetMaxIndexFromDB()
         {
@@ -38,6 +37,7 @@ namespace JourneyMangr
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = ("SELECT MAX(id) FROM data");
             int max = (int)cmd.ExecuteScalar();
+            
             con.Close();
             return max;
         }
@@ -72,46 +72,50 @@ namespace JourneyMangr
         }
         public int GetAutoID(string carname)
         {
-            string sql = "SELECT id FROM cars WHERE nev = " + carname;
-            int i;
-            string connection = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source ='db.mdb'";
-            OleDbDataAdapter da = new OleDbDataAdapter(sql, connection);
-            try
-            {
-                using (OleDbConnection conn = new OleDbConnection(connection))
-                {
-                    OleDbCommand command = new OleDbCommand(sql, conn);
-                    conn.Open();
-                    OleDbDataReader reader = command.ExecuteReader();
-                  i= reader.GetInt32(0);
-                    conn.Close();
-                  
-                }
-                return i;
-            }
+            string sql = "SELECT id FROM cars WHERE nev = ?";
+            int i = 0;
 
-            catch (Exception ex)
+          
+                OleDbCommand command = con.CreateCommand();
+                command.CommandText = sql;
+                command.CommandType = CommandType.Text;
+                con.Open();
+            command.Parameters.AddWithValue("carname",carname);
+                OleDbDataReader reader = command.ExecuteReader();
+            while (reader.Read())
             {
-                MessageBox.Show("Ellenőrizd az adatbázis kapcsolat meglétét!");
+                i = Convert.ToInt32(reader["id"]);
             }
+                return i;
+            
+
+          
+                     con.Close();
+            
             return 0;
         }
         public List<string> GetCarList()
         {
-            string sql = "SELECT DISTINCT nev FROM cars";
+            string sql = "SELECT nev FROM cars";
             List<string> l = new List<string>();
             string connection = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source ='db.mdb'";
-            OleDbDataAdapter da = new OleDbDataAdapter(sql, connection);
             try
             {
-                using (OleDbConnection conn = new OleDbConnection(connection))
+                /*using (OleDbConnection conn = new OleDbConnection(connection))
                 {
                     OleDbCommand command = new OleDbCommand(sql, conn);
                     conn.Open();
                     OleDbDataReader reader = command.ExecuteReader();
                    l.Add(reader.GetString(0));
                     conn.Close();
-                }
+                }*/
+                OleDbConnection cn = new OleDbConnection(@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = 'db.mdb'");
+                OleDbCommand command = new OleDbCommand(sql);
+             
+                cn.Open();
+                OleDbDataReader reader = command.ExecuteReader();
+                l.Add(reader.GetString(0));
+                cn.Close();
                 return l;
 
             }

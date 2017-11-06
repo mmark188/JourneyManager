@@ -40,5 +40,13 @@ namespace JourneyMangr
             App.Current.MainWindow = main;
             main.Show();
         }
+
+        private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+            dataGrid_Copy.DataContext = database.GetCarData(listBox.SelectedValue.ToString());
+           
+           
+        }
     }
 }

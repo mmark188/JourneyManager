@@ -19,9 +19,14 @@ namespace JourneyMangr
     /// </summary>
     public partial class carInput : Window
     {
+        DBase database = DBase.GetInstance();
         public carInput()
         {
             InitializeComponent();
+            foreach (var i in database.GetCarList())
+            {
+                listBox.Items.Add(i);
+            }
         }
 
         private void button_Click(object sender, RoutedEventArgs e)

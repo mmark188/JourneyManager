@@ -8,8 +8,8 @@
         Title="carInput" Height="320" Width="470"
         Closing="Window_Closing">
     <Grid>
-        <DataGrid x:Name="dataGrid_Copy" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Height="161" Width="218"/>
-        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="103" Margin="10,10,0,0" VerticalAlignment="Top" Width="218"/>
+        <DataGrid x:Name="dataGrid_Copy" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Height="161" Width="218"/>
+        <ListBox x:Name="listBox" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="103" Margin="10,10,0,0" VerticalAlignment="Top" Width="218"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="233,10,0,0" TextWrapping="Wrap" Text="Type" VerticalAlignment="Top" Width="219"/>
         <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" Margin="233,38,0,0" TextWrapping="Wrap" Text="Engine" VerticalAlignment="Top" Width="219"/>
         <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="23" Margin="233,66,0,0" TextWrapping="Wrap" Text="Production date" VerticalAlignment="Top" Width="219"/>

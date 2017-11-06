@@ -193,11 +193,13 @@ namespace JourneyMangr
         {
             List<CarData> d = GetCarDataList(carname);
             double sum = 0;
+            long km = 0;
             foreach (var i in d)
             {
                 sum += i.ar;
+                km += i.futottkm;
             }
-            sum = sum / d.Count;
+            sum = sum / km;
             return sum;
         }
     }

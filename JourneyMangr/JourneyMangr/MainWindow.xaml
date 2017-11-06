@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JourneyMangr"
         mc:Ignorable="d"
-        Title="MainWindow" Height="360" Width="525">
+        Title="Journey Manager" Height="360" Width="525">
     <Grid>
         <DataGrid x:Name="dataGrid" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Height="282" Width="295" />
         <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="497" SelectionChanged="comboBox_SelectionChanged"/>

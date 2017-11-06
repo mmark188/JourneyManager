@@ -153,7 +153,7 @@ namespace JourneyMangr
                 OleDbDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    d = new CarData(reader["nev"].ToString(),Convert.ToInt32(reader["futottkm"]),Convert.ToInt32(reader["kmallas"]),reader["szerviz"].ToString(),Convert.ToInt32(reader["ar"]));
+                    d = new CarData(reader["nev"].ToString(),Convert.ToInt32(reader["futottkm"]),Convert.ToInt32(reader["kmallas"]),Convert.ToInt32(reader["fogyasztas"]),reader["szerviz"].ToString(),Convert.ToInt32(reader["ar"]));
                     l.Add(d);
                 }
                 return l;

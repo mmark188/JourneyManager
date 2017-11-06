@@ -20,16 +20,21 @@ namespace JourneyMangr
     /// </summary>
     public partial class MainWindow : Window
     {
+        public void Initialization()
+        {
+            foreach (var i in database.GetCarList())
+            {
+                comboBox.Items.Add(i);
+            }
+           
+        }
         DBase database = DBase.GetInstance();
         public MainWindow()
         {
             InitializeComponent();
-           
-             foreach (var i in database.GetCarList())
-             {
-                 comboBox.Items.Add(i);
-             }
-          
+
+            Initialization();
+         
         }
 
         
@@ -37,6 +42,12 @@ namespace JourneyMangr
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             dataGrid.DataContext = database.GetCarData(comboBox.SelectedValue.ToString());
+            List<CarData> d = database.GetCarDataList(comboBox.SelectedValue.ToString());
+            futottkm_text.Text = d[d.Count-1].futottkm.ToString();
+            kmallas_text.Text = d[d.Count-1].kmallas.ToString();
+            fogyasztas_text.Text = d[d.Count-1].fogyasztas.ToString();
+            szerviz_text.Text = d[d.Count-1].szerviz.ToString();
+            ar_text.Text = d[d.Count-1].ar.ToString();
         }
     }
 }

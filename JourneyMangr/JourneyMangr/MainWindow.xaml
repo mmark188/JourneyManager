@@ -16,6 +16,9 @@
         <TextBox x:Name="fogyasztas_text" HorizontalAlignment="Left" Height="23" Margin="310,93,0,0" TextWrapping="Wrap" Text="Fogyasztott (l)" VerticalAlignment="Top" Width="197"/>
         <TextBox x:Name="szerviz_text" HorizontalAlignment="Left" Height="23" Margin="310,121,0,0" TextWrapping="Wrap" Text="Szervíz" VerticalAlignment="Top" Width="197"/>
         <TextBox x:Name="ar_text" HorizontalAlignment="Left" Height="23" Margin="310,149,0,0" TextWrapping="Wrap" Text="Ár" VerticalAlignment="Top" Width="197"/>
+        <Label x:Name="label" Content="Költség:" HorizontalAlignment="Left" Margin="310,177,0,0" VerticalAlignment="Top" Height="32" Width="57"/>
+        <Label x:Name="label_Copy" Content="Ft/km" HorizontalAlignment="Left" Margin="457,177,0,0" VerticalAlignment="Top" Height="32" Width="50"/>
+        <Label x:Name="label_Copy1" Content="Label" HorizontalAlignment="Left" Margin="372,177,0,0" VerticalAlignment="Top" Height="32" Width="80"/>
 
     </Grid>
 </Window>

@@ -65,7 +65,10 @@ namespace JourneyMangr
 
         private void btnNewCar_Click(object sender, RoutedEventArgs e)
         {
-
+            carInput carInput = new carInput();
+            App.Current.MainWindow = carInput;
+            this.Close();
+            carInput.Show();
         }
     }
 }

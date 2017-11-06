@@ -28,5 +28,12 @@ namespace JourneyMangr
         {
 
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            App.Current.MainWindow = main;
+            main.Show();
+        }
     }
 }

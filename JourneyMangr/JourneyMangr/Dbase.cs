@@ -28,7 +28,7 @@ namespace JourneyMangr
         OleDbConnection con = new OleDbConnection
             (@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source =
             'db.mdb'");
-        
+
         private int GetMaxIndexFromDB()
         {
             con.Close();
@@ -41,7 +41,7 @@ namespace JourneyMangr
             con.Close();
             return max;
         }
-     
+
         public void AddCar(string name, int ccm, string fuel)
         {
             string sql = "INSERT INTO cars ([nev], [motorccm], [uzemanyag]) VALUES ([@Nev], [@Ccm], [@Fuel])";
@@ -56,12 +56,44 @@ namespace JourneyMangr
                 cmd.ExecuteNonQuery();
                 cn.Close();
             }
-           
+
         }
-       
-     
-      
-       
+
+        public DataTable GetCarData(string carname)
+        {
+            string sql = "SELECT nev, futottkm, kmallas FROM data INNER JOIN cars ON data.autoid = cars.id WHERE autoid=" + GetAutoID(carname);
+            DataTable dt = new DataTable();
+            OleDbConnection cn = new OleDbConnection(@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = 'db.mdb'");
+            OleDbDataAdapter da = new OleDbDataAdapter(sql, cn);
+            cn.Open();
+            da.Fill(dt);
+            cn.Close();
+            return dt;
+        }
+        public int GetAutoID(string carname)
+        {
+            string sql = "SELECT id FROM cars WHERE nev = " + carname;
+            int i;
+            string connection = @"Provider = Microsoft.Jet.OLEDB.4.0; Data Source ='db.mdb'";
+            OleDbDataAdapter da = new OleDbDataAdapter(sql, connection);
+            try
+            {
+                using (OleDbConnection conn = new OleDbConnection(connection))
+                {
+                    OleDbCommand command = new OleDbCommand(sql, conn);
+                    conn.Open();
+                    OleDbDataReader reader = command.ExecuteReader();
+                    reader.GetInt32(0);
+                    conn.Close();
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ellenőrizd az adatbázis kapcsolat meglétét!");
+            }
+            return 0;
+        }
     }
 }
-

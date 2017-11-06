@@ -61,7 +61,7 @@ namespace JourneyMangr
 
         public DataTable GetCarData(string carname)
         {
-            string sql = "SELECT nev, futottkm, kmallas FROM data INNER JOIN cars ON data.autoid = cars.id WHERE autoid=" + GetAutoID(carname);
+            string sql = "SELECT nev, futottkm, kmallas, fogyasztas, szerviz, ar FROM data INNER JOIN cars ON data.autoid = cars.id WHERE autoid=" + GetAutoID(carname);
             DataTable dt = new DataTable();
             OleDbConnection cn = new OleDbConnection(@"Provider = Microsoft.Jet.OLEDB.4.0; Data Source = 'db.mdb'");
             OleDbDataAdapter da = new OleDbDataAdapter(sql, cn);

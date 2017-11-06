@@ -29,8 +29,7 @@ namespace JourneyMangr
              {
                  comboBox.Items.Add(i);
              }
-            comboBox.SelectedIndex = 0;
-            dataGrid.DataContext= database.GetCarData("eclipse");
+          
         }
 
         

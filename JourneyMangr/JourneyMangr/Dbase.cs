@@ -117,7 +117,7 @@ namespace JourneyMangr
                 if (con!=null)
                     con.Close();
             }
-            return 0;
+         
         }
         public List<string> GetCarList()
         {
@@ -204,7 +204,37 @@ namespace JourneyMangr
         }
         public void DeleteCar(string carname)
         {
+            int id = GetAutoID(carname);
+            string sql = "DELETE FROM data WHERE [autoid] = ?";
+            OleDbCommand command = con.CreateCommand();
+            command.CommandText = sql;
+            command.CommandType = CommandType.Text;
 
+            try
+            {
+                con.Open();
+                command.Parameters.AddWithValue("[@?]", id);
+                command.ExecuteNonQuery();
+                OleDbCommand cmd = con.CreateCommand();
+                sql = "DELETE FROM cars WHERE nev = ?";
+                cmd.CommandText = sql;
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("[@?]", carname);
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            { 
+                throw new Exception("Ellenőrizd az adatbázis kapcsolat meglétét!");
+            }
+            finally
+            {
+                if (con != null)
+                    con.Close();
+            }
+        }
+        public void Export()
+        {
+          
         }
     }
 }

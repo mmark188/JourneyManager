@@ -9,7 +9,7 @@
         Closing="Window_Closing">
     <Grid>
         <DataGrid x:Name="dataGrid_Copy" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Height="161" Width="218"/>
-        <ListBox x:Name="listBox" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="103" Margin="10,10,0,0" VerticalAlignment="Top" Width="218" SelectionChanged="listBox_SelectionChanged"/>
+        <ListBox x:Name="listBox" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="103" Margin="10,10,0,0" VerticalAlignment="Top" Width="218" SelectionChanged="listBox_SelectionChanged" />
         <TextBox x:Name="txtNev" HorizontalAlignment="Left" Height="23" Margin="233,10,0,0" TextWrapping="Wrap" Text="nev" VerticalAlignment="Top" Width="219"/>
         <TextBox x:Name="txtCcm" HorizontalAlignment="Left" Height="23" Margin="233,38,0,0" TextWrapping="Wrap" Text="ccm" VerticalAlignment="Top" Width="219"/>
         <TextBox x:Name="txtFuelType" HorizontalAlignment="Left" Height="23" Margin="233,66,0,0" TextWrapping="Wrap" Text="fuel type" VerticalAlignment="Top" Width="219"/>

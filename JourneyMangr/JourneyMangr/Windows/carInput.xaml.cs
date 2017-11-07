@@ -62,15 +62,12 @@ namespace JourneyMangr
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
-            
             listBox.SelectionChanged -= listBox_SelectionChanged;
             database.DeleteCar(listBox.SelectedValue.ToString());
             listBox.Items.Clear();
             Initialize();
             listBox.SelectionChanged += listBox_SelectionChanged;
-          
             listBox.SelectedIndex = 0;
-
             dataGrid_Copy.DataContext = database.GetCarData(listBox.SelectedValue.ToString());
         }
     }

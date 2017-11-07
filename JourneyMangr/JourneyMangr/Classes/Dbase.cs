@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows;
-
+using excel = Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
+using System.IO;
 namespace JourneyMangr
 {
     public class DBase
@@ -232,9 +234,48 @@ namespace JourneyMangr
                     con.Close();
             }
         }
-        public void Export()
+       
+        public void ExportToExcel(DataTable dt, string location)
         {
-          
+            excel.Application XlObj = new excel.Application();
+            XlObj.Visible = false;
+            excel._Workbook WbObj = (excel.Workbook)(XlObj.Workbooks.Add(""));
+            excel._Worksheet WsObj = (excel.Worksheet)WbObj.ActiveSheet;
+
+            try
+            {
+                int row = 1; int col = 1;
+                foreach (DataColumn column in dt.Columns)
+                {
+                    WsObj.Cells[row, col] = column.ColumnName;
+                    col++;
+                }
+                col = 1;
+                row++;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    foreach (var cell in dt.Rows[i].ItemArray)
+                    {
+                        WsObj.Cells[row, col] = cell;
+                        col++;
+                    }
+                    col = 1;
+                    row++;
+                }
+                WbObj.SaveAs(location);
+            }
+            catch (IOException)
+            {
+
+            }
+            catch (Exception ex)
+            {
+             
+            }
+            finally
+            {
+                WbObj.Close();
+            }
         }
     }
 }

@@ -53,11 +53,11 @@ namespace JourneyMangr
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            listBox.SelectionChanged -= listBox_SelectionChanged;
+            
             database.AddCar(txtNev.Text,Convert.ToInt32(txtCcm.Text),txtFuelType.Text);
             listBox.Items.Clear();
             Initialize();
-            listBox.SelectionChanged += listBox_SelectionChanged;
+            
         }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
@@ -68,7 +68,10 @@ namespace JourneyMangr
             listBox.Items.Clear();
             Initialize();
             listBox.SelectionChanged += listBox_SelectionChanged;
-            
+          
+            listBox.SelectedIndex = 0;
+
+            dataGrid_Copy.DataContext = database.GetCarData(listBox.SelectedValue.ToString());
         }
     }
 }

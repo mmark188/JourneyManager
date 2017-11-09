@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.OleDb;
 using System.Windows;
-using excel = Microsoft.Office.Interop.Excel;
 using System.Runtime.InteropServices;
 using System.IO;
 namespace JourneyMangr
@@ -236,7 +235,7 @@ namespace JourneyMangr
         }
 
        
-        public void ExportToExcel(DataTable dt, string location)
+     /* public void ExportToExcel(DataTable dt, string location)
         {
             excel.Application XlObj = new excel.Application();
             XlObj.Visible = false;
@@ -277,6 +276,6 @@ namespace JourneyMangr
             {
                 WbObj.Close();
             }
-        }
+        }*/
     }
 }

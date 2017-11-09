@@ -67,8 +67,11 @@ namespace JourneyMangr
             listBox.Items.Clear();
             Initialize();
             listBox.SelectionChanged += listBox_SelectionChanged;
-            listBox.SelectedIndex = 0;
-            dataGrid_Copy.DataContext = database.GetCarData(listBox.SelectedValue.ToString());
+            if (listBox.Items.Count >= 1)
+            {
+                listBox.SelectedIndex = 0;
+                dataGrid_Copy.DataContext = database.GetCarData(listBox.SelectedValue.ToString());
+            }
         }
     }
 }

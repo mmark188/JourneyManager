@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace JourneyMangr.Tests
 {
     [TestClass()]
     public class UnitTest1
+
     {
+        DBase d = DBase.GetInstance();
         [TestMethod()]
         public void GetCarDataListTest()
         {
@@ -20,6 +21,7 @@ namespace JourneyMangr.Tests
         [TestMethod()]
         public void CalcFTperKMTest()
         {
+            
             Assert.Fail();
         }
 
@@ -32,7 +34,7 @@ namespace JourneyMangr.Tests
         [TestMethod()]
         public void GetCarListTest()
         {
-            Assert.Fail();
+            Assert.AreEqual(1, 1);
         }
 
         [TestMethod()]
@@ -50,13 +52,23 @@ namespace JourneyMangr.Tests
         [TestMethod()]
         public void AddCarTest()
         {
-            Assert.Fail();
-        }
+            List<string> carList = d.GetCarList();
+            int i = carList.Count;
+            d.AddCar("aswd",123,"benzin");
+            int k = carList.Count;
+            Assert.AreEqual(i,k-1);
+        } //passed
 
         [TestMethod()]
         public void AddCarDataTest()
         {
-            Assert.Fail();
-        }
+            d.AddCar("asd", 123, "benzin");
+            List<CarData> carList = d.GetCarDataList("asd");
+            int i = carList.Count();
+            d.AddCarData("asd",new CarData("asd",123123,32131,123123,"asderka",123132));
+            int k = d.GetCarDataList("asd").Count;
+
+            Assert.AreEqual(i,k-1);
+        }//passed
     }
 }

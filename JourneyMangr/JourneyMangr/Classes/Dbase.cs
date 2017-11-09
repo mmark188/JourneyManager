@@ -8,6 +8,7 @@ using System.Data.OleDb;
 using System.Windows;
 using System.Runtime.InteropServices;
 using System.IO;
+using excel = Microsoft.Office.Interop.Excel;
 namespace JourneyMangr
 {
     public class DBase
@@ -234,8 +235,8 @@ namespace JourneyMangr
             }
         }
 
-       
-     /* public void ExportToExcel(DataTable dt, string location)
+
+        public void ExportToExcel(DataTable dt, string location)
         {
             excel.Application XlObj = new excel.Application();
             XlObj.Visible = false;
@@ -270,12 +271,12 @@ namespace JourneyMangr
             }
             catch (Exception ex)
             {
-             
+
             }
             finally
             {
                 WbObj.Close();
             }
-        }*/
+        }
     }
 }

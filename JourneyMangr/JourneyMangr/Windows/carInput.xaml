@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:JourneyMangr"
         mc:Ignorable="d"
         Title="carInput" Height="606.075" Width="567"
-        Closing="Window_Closing">
+        Closing="Window_Closing" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid>
         <DataGrid x:Name="dataGrid_Copy" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top" Height="282" Width="539"/>
         <ListBox x:Name="listBox" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="163" Margin="10,10,0,0" VerticalAlignment="Top" Width="218" SelectionChanged="listBox_SelectionChanged" />

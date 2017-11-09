@@ -26,7 +26,7 @@ namespace JourneyMangr
             {
                 comboBox.Items.Add(i);
             }
-           
+
         }
         DBase database = DBase.GetInstance();
         public MainWindow()
@@ -34,7 +34,7 @@ namespace JourneyMangr
             InitializeComponent();
 
             Initialization();
-         
+
         }
 
 
@@ -43,22 +43,27 @@ namespace JourneyMangr
         {
             dataGrid.DataContext = database.GetCarData(comboBox.SelectedValue.ToString());
             List<CarData> d = database.GetCarDataList(comboBox.SelectedValue.ToString());
-            if (d.Count>0)
-            { 
-            futottkm_text.Text = d[d.Count - 1].futottkm.ToString();
-            kmallas_text.Text = d[d.Count - 1].kmallas.ToString();
-            fogyasztas_text.Text = d[d.Count - 1].fogyasztas.ToString();
-            szerviz_text.Text = d[d.Count - 1].szerviz.ToString();
-            ar_text.Text = d[d.Count - 1].ar.ToString();
-                label_Copy1.Content = Math.Round(database.CalcFTperKM(comboBox.SelectedValue.ToString()),2);
+            if (d.Count > 0)
+            {
+                futottkm_text.Text = d[d.Count - 1].futottkm.ToString();
+                kmallas_text.Text = d[d.Count - 1].kmallas.ToString();
+                fogyasztas_text.Text = d[d.Count - 1].fogyasztas.ToString();
+                szerviz_text.Text = d[d.Count - 1].szerviz.ToString();
+                ar_text.Text = d[d.Count - 1].ar.ToString();
+
+
+
+
+
+                label_Copy1.Content = Math.Round(database.CalcFTperKM(comboBox.SelectedValue.ToString()), 2);
             }
         }
 
         private void btnUpload_Click(object sender, RoutedEventArgs e)
         {
             CarData d = new CarData(comboBox.SelectedValue.ToString(),
-                Convert.ToInt32(futottkm_text.Text),Convert.ToInt32(kmallas_text.Text),
-                Convert.ToInt32(fogyasztas_text.Text),szerviz_text.Text.ToString(),
+                Convert.ToInt32(futottkm_text.Text), Convert.ToInt32(kmallas_text.Text),
+                Convert.ToInt32(fogyasztas_text.Text), szerviz_text.Text.ToString(),
                 Convert.ToInt32(ar_text.Text));
             database.AddCarData(comboBox.SelectedValue.ToString(), d);
             dataGrid.DataContext = database.GetCarData(comboBox.SelectedValue.ToString());

@@ -198,7 +198,7 @@ namespace JourneyMangr
             foreach (var i in d)
             {
                 sum += i.ar;
-                km += i.futottkm;
+                km += i.kmallas;
             }
             sum = sum / km;
             return sum;

@@ -50,6 +50,7 @@ namespace JourneyMangr
             fogyasztas_text.Text = d[d.Count - 1].fogyasztas.ToString();
             szerviz_text.Text = d[d.Count - 1].szerviz.ToString();
             ar_text.Text = d[d.Count - 1].ar.ToString();
+                label_Copy1.Content = Math.Round(database.CalcFTperKM(comboBox.SelectedValue.ToString()),2);
             }
         }
 

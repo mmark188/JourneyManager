@@ -59,25 +59,16 @@ namespace JourneyMangr
             Initialize();
             
         }
-        private void btnExport_Click(object sender, RoutedEventArgs e)
-        {
-            database.ExportToExcel(database.GetCarData(listBox.SelectedItem.ToString()), "");
 
-        }
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
-            database.DeleteCar(listBox.SelectedValue.ToString());
             listBox.SelectionChanged -= listBox_SelectionChanged;
-            
+            database.DeleteCar(listBox.SelectedValue.ToString());
             listBox.Items.Clear();
             Initialize();
             listBox.SelectionChanged += listBox_SelectionChanged;
-            if (listBox.Items.Count>=1)
-            {
-                listBox.SelectedIndex = 0;
-                dataGrid_Copy.DataContext = database.GetCarData(listBox.SelectedValue.ToString());
-
-            }
+            listBox.SelectedIndex = 0;
+            dataGrid_Copy.DataContext = database.GetCarData(listBox.SelectedValue.ToString());
         }
     }
 }

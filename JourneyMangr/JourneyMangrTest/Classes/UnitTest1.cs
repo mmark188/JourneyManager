@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+
 namespace JourneyMangr.Tests
 {
     [TestClass()]
@@ -32,9 +34,11 @@ namespace JourneyMangr.Tests
         }
 
         [TestMethod()]
-        public void GetCarListTest()
+        public void GetCarListTest() //passed
         {
-            Assert.AreEqual(1, 1);
+            d.AddCar("asd",112,"benzin");
+            List<string> l = d.GetCarList();
+            Assert.IsTrue(l.Count >= 1);
         }
 
         [TestMethod()]
@@ -46,17 +50,21 @@ namespace JourneyMangr.Tests
         [TestMethod()]
         public void GetCarDataTest()
         {
-            Assert.Fail();
+            d.AddCar("testcar", 123, "gas");
+            d.AddCarData("testcar", new CarData("testcar",123123,123124,15,"nope",123));
+          
+            Assert.AreNotEqual(d.GetCarData("testcar").Rows.Count,0);
         }
 
         [TestMethod()]
         public void AddCarTest()
         {
+
             List<string> carList = d.GetCarList();
             int i = carList.Count;
             d.AddCar("aswd",123,"benzin");
-            int k = carList.Count;
-            Assert.AreEqual(i,k-1);
+            carList = d.GetCarList();
+            Assert.IsTrue(carList.Count > i);
         } //passed
 
         [TestMethod()]

@@ -54,7 +54,7 @@ namespace JourneyMangr.Tests
             d.AddCarData("testcar", new CarData("testcar",123123,123124,15,"nope",123));
           
             Assert.AreNotEqual(d.GetCarData("testcar").Rows.Count,0);
-        }
+        } //passed
 
         [TestMethod()]
         public void AddCarTest()

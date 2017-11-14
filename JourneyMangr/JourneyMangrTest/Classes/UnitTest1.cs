@@ -28,9 +28,13 @@ namespace JourneyMangr.Tests
         }
 
         [TestMethod()]
-        public void DeleteCarTest()
+        public void DeleteCarTest()//passed
         {
-            Assert.Fail();
+            d.AddCar("DeleteTestCar", 123, "delete");
+            int i = d.GetAutoID("DeleteTestCar");
+            d.DeleteCar("DeleteTestCar");
+            int k = d.GetAutoID("DeleteTestCar");
+            Assert.AreNotEqual(i, k);
         }
 
         [TestMethod()]

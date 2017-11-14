@@ -15,9 +15,13 @@ namespace JourneyMangr.Tests
     {
         DBase d = DBase.GetInstance();
         [TestMethod()]
-        public void GetCarDataListTest()
+        public void GetCarDataListTest()//passed
         {
-            Assert.Fail();
+            d.AddCar("CarDataListTest", 1250, "gas");
+            d.AddCarData("CarDataListTest", new CarData("CarDataListTest", 250000, 500, 50, "asd", 34000));
+            d.AddCarData("CarDataListTest", new CarData("CarDataListTest", 250500, 500, 50, "asd", 34000));
+            List<CarData> l = d.GetCarDataList("CarDataListTest");
+            Assert.AreEqual(2,l.Count);
         }
 
         [TestMethod()]

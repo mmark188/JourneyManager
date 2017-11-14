@@ -42,9 +42,11 @@ namespace JourneyMangr.Tests
         }
 
         [TestMethod()]
-        public void GetAutoIDTest()
+        public void GetAutoIDTest() //passed
         {
-            Assert.Fail();
+            d.AddCar("proba123",123123,"asdasd");
+            int i = d.GetAutoID("proba123");
+            Assert.AreEqual(i,(int)d.GetAutoID("proba123"));
         }
 
         [TestMethod()]

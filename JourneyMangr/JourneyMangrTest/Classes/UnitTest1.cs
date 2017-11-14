@@ -21,10 +21,14 @@ namespace JourneyMangr.Tests
         }
 
         [TestMethod()]
-        public void CalcFTperKMTest()
+        public void CalcFTperKMTest()//passed
         {
-            
-            Assert.Fail();
+            d.AddCar("CalcTest",1250,"gas");
+            d.AddCarData("CalcTest",new CarData("CalcTest",250000,500,50,"asd",34000));
+            d.AddCarData("CalcTest", new CarData("CalcTest", 250500, 500, 50, "asd", 34000));
+            double sum = (34000 + 34000) / (500 + 500);
+           double c =  d.CalcFTperKM("CalcTest");
+            Assert.AreEqual(sum,c);
         }
 
         [TestMethod()]

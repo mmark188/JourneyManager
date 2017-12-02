@@ -79,7 +79,7 @@ namespace JourneyMangr
 
         private void btnExport_Click(object sender, RoutedEventArgs e)
         {
-            
+            database.ExportToExcel(database.GetCarData(comboBox.SelectedValue.ToString()), "");
         }
     }
 }

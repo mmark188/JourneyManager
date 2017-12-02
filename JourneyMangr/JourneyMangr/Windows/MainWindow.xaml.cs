@@ -76,5 +76,10 @@ namespace JourneyMangr
             this.Close();
             carInput.Show();
         }
+
+        private void btnExport_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

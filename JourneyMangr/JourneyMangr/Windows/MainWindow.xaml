@@ -10,7 +10,7 @@
     <Grid>
         <DataGrid x:Name="dataGrid" ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Height="282" Width="295" />
         <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="497" SelectionChanged="comboBox_SelectionChanged"/>
-        <Button x:Name="btnNewCar" Content="Opciók" HorizontalAlignment="Left" Margin="310,269,0,0" VerticalAlignment="Top" Width="197" Height="50" Click="btnNewCar_Click"/>
+        <Button x:Name="btnNewCar" Content="Opciók" HorizontalAlignment="Left" Margin="310,269,0,0" VerticalAlignment="Top" Width="102" Height="50" Click="btnNewCar_Click"/>
         <Button x:Name="btnUpload" Content="Bevitel" HorizontalAlignment="Left" Margin="310,214,0,0" VerticalAlignment="Top" Width="197" Height="50" Click="btnUpload_Click"/>
         <TextBox x:Name="futottkm_text" HorizontalAlignment="Left" Height="23" Margin="310,37,0,0" TextWrapping="Wrap" Text="Futott KM" VerticalAlignment="Top" Width="197" />
         <TextBox x:Name="kmallas_text" HorizontalAlignment="Left" Height="23" Margin="310,65,0,0" TextWrapping="Wrap" Text="KM állás" VerticalAlignment="Top" Width="197"/>
